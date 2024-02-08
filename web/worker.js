@@ -1,7 +1,8 @@
 onmessage = (event) => {
     let m = event.data.m;
     let n = event.data.n;
-    postMessage(increment_sum(m,n));
+    let sum = increment_sum(m,n);
+    postMessage(sum);
 }
 
 function increment_sum(m,n) {
