@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>[Demo2 UI Worker] Web Worker</title>
+  </head>
+  <body>
+    <h1>[Demo2 UI Worker] Web Worker</h1>
+    <div>
+      <span class="message"></span>
+    </div>
+    <script>
+      window.onload = async (event) => {
+          let spanMessage = document.querySelector(".message");
+          spanMessage.innerText = "";
+
+          let worker = new Worker("demo2-ui-worker.js");
+
+          let sum1 = await new Promise ((resolve,reject) => {
+              worker.onmessage = (event) => {
+                  resolve(event.data);
+              }
+              worker.postMessage({m:1, n:1000000000});
+          });
+          console.log(sum1);
+          spanMessage.innerText = sum1;
+
+          let sum2 = await new Promise ((resolve,reject) => {
+              worker.onmessage = (event) => {
+                  resolve(event.data);
+              }
+              worker.postMessage({m:2, n:1000000000});
+          });
+          console.log(sum2);
+          spanMessage.innerText = sum2;
+
+          worker.terminate();
+      };
+    </script>
+  </body>
+</html>

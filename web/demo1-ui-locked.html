@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>[Demo1 UI Locked] Web Worker</title>
+  </head>
+  <body>
+    <h1>[Demo1 UI Locked] Web Worker</h1>
+    <div>
+      <span class="message"></span>
+    </div>
+    <script>
+      window.onload = (event) => {
+          let spanMessage = document.querySelector(".message");
+          spanMessage.innerText = "";
+
+          let sum1 = inclement_sum(1,1000000000);
+          console.log(sum1);
+          spanMessage.innerText = sum1;
+
+          let sum2 = inclement_sum(2,1000000000);
+          console.log(sum2);
+          spanMessage.innerText = sum2;
+      };
+      function inclement_sum(m,n) {
+          let result = 0;
+          for (let i = 1; i <= n; i++) {
+              result += i * m;
+          }
+          return result;
+      }
+    </script>
+  </body>
+</html>
