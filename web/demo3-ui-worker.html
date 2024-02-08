@@ -14,7 +14,7 @@
           let spanMessage = document.querySelector(".message");
           spanMessage.innerText = "";
 
-          let worker = new Worker("demo2-ui-worker.js");
+          let worker = new Worker("worker.js");
 
           worker.onmessage = (event) => {
               let sum1 = event.data;
