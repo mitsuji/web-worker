@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>[Demo3 UI Worker] Web Worker</title>
+  </head>
+  <body>
+    <h1>[Demo3 UI Worker] Web Worker</h1>
+    <div>
+      <span class="message"></span>
+    </div>
+    <script>
+      window.onload = (event) => {
+          let spanMessage = document.querySelector(".message");
+          spanMessage.innerText = "";
+
+          let worker = new Worker("demo2-ui-worker.js");
+
+          worker.onmessage = (event) => {
+              let sum1 = event.data;
+              console.log(sum1);
+              spanMessage.innerText = sum1;
+
+              worker.onmessage = (event) => {
+                  let sum2 = event.data;
+                  console.log(sum2);
+                  spanMessage.innerText = sum2;
+                  worker.terminate();
+              }
+              worker.postMessage({m:2, n:1000000000});
+
+          }
+          worker.postMessage({m:1, n:1000000000});
+
+      };
+    </script>
+  </body>
+</html>

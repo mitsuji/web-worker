@@ -9,4 +9,7 @@
 
 ### [web/demo2-ui-worker.html](web/demo2-ui-worker.html)
 Web Worker API を使って重い処理を非同期にするとUIがロックされなくなる  
-(sum1, sum2 では spam.message が更新される)
+(sum1, sum2 両方で spam.message が更新される)
+
+### [web/demo3-ui-worker.html](web/demo3-ui-worker.html)
+demo2 の Promise 使わないバージョン

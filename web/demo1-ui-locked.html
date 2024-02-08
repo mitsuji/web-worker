@@ -14,15 +14,15 @@
           let spanMessage = document.querySelector(".message");
           spanMessage.innerText = "";
 
-          let sum1 = inclement_sum(1,1000000000);
+          let sum1 = increment_sum(1,1000000000);
           console.log(sum1);
           spanMessage.innerText = sum1;
 
-          let sum2 = inclement_sum(2,1000000000);
+          let sum2 = increment_sum(2,1000000000);
           console.log(sum2);
           spanMessage.innerText = sum2;
       };
-      function inclement_sum(m,n) {
+      function increment_sum(m,n) {
           let result = 0;
           for (let i = 1; i <= n; i++) {
               result += i * m;
